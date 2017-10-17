@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Rick CSS Variables</title>
+  <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
   <h6>Update Rick With Controls <span class='hl'>JS</span></h6>
@@ -18,81 +19,12 @@
     <input id="zoom" type="range" name="zoom" value="0">
   </div>
 
-  <img class="changed" src="rick-sanchez.png">
+  <img class="changed" src="style/rick-sanchez.png">
 
-  <style>
-    /*css variables*/
-    :root {
-      --zoom:0;
-      --spacing:0px;
-      --blur:0px;
-    }
+ 
 
-    h6{
-      margin:0;
-      padding:0;
-    }
-
-    .changed {
-      width:500px;
-      padding: var(--spacing);
-      zoom: var(--zoom);
-      filter:blur(var(--blur))
-      /*width:50%;*/
-    }
+  <script src="js/js.js">
     
-    /*
-      misc styles, nothing to do with CSS variables
-    */
-
-    body {
-      text-align: center;
-      background: url('rickBackground.png');
-      background-size:cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: white;
-      font-family: 'helvetica neue', sans-serif;
-      font-weight: 100;
-      font-size: 50px;
-    }
-
-    .controls {
-      margin-bottom: 10px;
-    }
-    label{
-      font-size:30px;
-    }
-    input {
-      /*font-size:30px;*/
-      width:100px;
-    }
-  </style>
-
-  <script>
-    // VARIABLES
-    // ========================================================
-    const inputs = document.querySelectorAll('.controls input')
-    console.log(inputs);
-
-    // FUNCTIONS
-    //==========================================================
-    function handleUpdate(){
-      const value = this.value;
-      const name = this.name;
-      // grabs element's data attribute of 'sizing', and sets to variable suffix or else nothing, so that it doesn't come up undefined.
-      const suffix = this.dataset.sizing || '';
-      console.log("value: " + value + " name: " + name + " suffix: " + suffix);
-      // documentElement grabs the root element set in css.
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-      // console.log(this.value);
-    }
-
-    // PROCESS
-    // ==========================================================
-    // grabs the const 'inputs', and for each of the items in the node list runs function. takes input as an argument and adds an event listener to each input on change and on mousemove.
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 
 </body>
