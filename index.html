@@ -2,36 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scoped CSS Variables and JS</title>
+  <title>Rick CSS Variables</title>
 </head>
 <body>
-  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+  <h6>Update Rick With Controls <span class='hl'>JS</span></h6>
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input id="spacing" type="range" name="spacing" min="0" max="200" value="0" data-sizing="px">
 
     <label for="blur">Blur:</label>
-    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-sizing="px">
 
     <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#ffc600">
+    <input id="base" type="color" name="base" value="#00fffa">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <img src="rick-sanchez.jpg">
 
   <style>
     /*css variables*/
     :root {
       --base:#00fffa;
-      --spacing:10px;
-      --blur:10px;
+      --spacing:0px;
+      --blur:0px;
+    }
+
+    h6{
+      margin:0;
+      padding:0;
     }
 
     img {
+      width:500px;
       padding: var(--spacing);
       background: var(--base);
       filter:blur(var(--blur))
+      /*width:50%;*/
     }
     
     /*
@@ -40,7 +47,7 @@
 
     body {
       text-align: center;
-      background: #193549;
+      background: #193549 url('rickBackground.png');
       color: white;
       font-family: 'helvetica neue', sans-serif;
       font-weight: 100;
@@ -48,28 +55,38 @@
     }
 
     .controls {
-      margin-bottom: 50px;
+      margin-bottom: 10px;
     }
-
+    label{
+      font-size:30px;
+    }
     input {
+      /*font-size:30px;*/
       width:100px;
     }
   </style>
 
   <script>
+    // VARIABLES
+    // ========================================================
     const inputs = document.querySelectorAll('.controls input')
     console.log(inputs);
 
+    // FUNCTIONS
+    //==========================================================
     function handleUpdate(){
       const value = this.value;
       const name = this.name;
       // grabs element's data attribute of 'sizing', and sets to variable suffix or else nothing, so that it doesn't come up undefined.
       const suffix = this.dataset.sizing || '';
       console.log("value: " + value + " name: " + name + " suffix: " + suffix);
-
+      // documentElement grabs the root element set in css.
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
       // console.log(this.value);
     }
+
+    // PROCESS
+    // ==========================================================
     // grabs the const 'inputs', and for each of the items in the node list runs function. takes input as an argument and adds an event listener to each input on change and on mousemove.
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
