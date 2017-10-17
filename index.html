@@ -26,7 +26,13 @@
       --base:#00fffa;
       --spacing:10px;
       --blur:10px;
-    };
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter:blur(var(--blur))
+    }
     
     /*
       misc styles, nothing to do with CSS variables
