@@ -67,7 +67,7 @@
       const suffix = this.dataset.sizing || '';
       console.log("value: " + value + " name: " + name + " suffix: " + suffix);
 
-      // document.documentElement.style.setProperty
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
       // console.log(this.value);
     }
     // grabs the const 'inputs', and for each of the items in the node list runs function. takes input as an argument and adds an event listener to each input on change and on mousemove.
