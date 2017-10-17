@@ -14,16 +14,16 @@
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-sizing="px">
 
-    <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#00fffa">
+    <label for="zoom">Magnify</label>
+    <input id="zoom" type="range" name="zoom" value="0">
   </div>
 
-  <img src="rick-sanchez.jpg">
+  <img class="changed" src="rick-sanchez.png">
 
   <style>
     /*css variables*/
     :root {
-      --base:#00fffa;
+      --zoom:0;
       --spacing:0px;
       --blur:0px;
     }
@@ -33,10 +33,10 @@
       padding:0;
     }
 
-    img {
+    .changed {
       width:500px;
       padding: var(--spacing);
-      background: var(--base);
+      zoom: var(--zoom);
       filter:blur(var(--blur))
       /*width:50%;*/
     }
@@ -47,7 +47,10 @@
 
     body {
       text-align: center;
-      background: #193549 url('rickBackground.png');
+      background: url('rickBackground.png');
+      background-size:cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: white;
       font-family: 'helvetica neue', sans-serif;
       font-weight: 100;
